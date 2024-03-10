@@ -1,6 +1,6 @@
 # PatchConv: Patch convolution to avoid large GPU memory usage of Conv2D [[Blog]](https://hanlab.mit.edu/blog/patchconv)
 
-![patch_conv](./assets/patch_conv.jpg)
+![patch_conv](https://github.com/mit-han-lab/patch_conv/blob/main/assets/patch_conv.jpg)
 
 ## Background
 
@@ -8,7 +8,7 @@ For high-resolution content generation, neural networks may require applying con
 
 To bypass this issue and reduce memory consumption, we propose a simple and effective solution -- Patch Conv. As shown in the above figure, similar to [SIGE](https://github.com/lmxyy/sige), Patch Conv first divides the input into several smaller patches along the height dimension while keeping some overlap between them. These patches are then reorganized into the batch dimension and fed into the original convolution to produce output patches, which are then concatenated together to form the final output. Patch Conv can reduce memory usage by over 2.4×, providing a viable workaround for the limitations of current implementations.
 
-![background](./assets/background.jpg)
+![background](https://github.com/mit-han-lab/patch_conv/blob/main/assets/background.jpg)
 
 ## Installation
 
@@ -49,7 +49,7 @@ with torch.no_grad():
 
 ## Performance
 
-![performance](./assets/performance.jpg)
+![performance](https://github.com/mit-han-lab/patch_conv/blob/main/assets/performance.jpg)
 
 Patch Conv significantly reduces memory consumption by over 2.4× across various kernel sizes and input resolutions with a marginally slower inference speed compared to vanilla convolution.
 
