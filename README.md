@@ -59,5 +59,6 @@ Patch Conv significantly reduces memory consumption by over 2.4× across various
 
 ## Related Projects
 
-* [DistriFusion: Distributed Parallel Inference for High-Resolution Diffusion Models](https://github.com/mit-han-lab/distrifuser), Li *et al.*, CVPR 2024
+* [MCUNetV2: Memory-Efficient Patch-based Inference for Tiny Deep Learning](https://arxiv.org/abs/2110.15352), Lin *et al.*, NeurIPS 2021
 * [Efficient Spatially Sparse Inference for Conditional GANs and Diffusion Models](https://github.com/lmxyy/sige), Li *et al.*, NeurIPS 2022
+* [DistriFusion: Distributed Parallel Inference for High-Resolution Diffusion Models](https://github.com/mit-han-lab/distrifuser), Li *et al.*, CVPR 2024
