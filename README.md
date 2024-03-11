@@ -1,4 +1,4 @@
-# PatchConv: Patch convolution to avoid large GPU memory usage of Conv2D [[Blog]](https://hanlab.mit.edu/blog/patch-conv)
+# Patch Conv: Patch convolution to avoid large GPU memory usage of Conv2D [[Blog]](https://hanlab.mit.edu/blog/patch-conv)
 
 ![patch_conv](https://github.com/mit-han-lab/patch_conv/blob/main/assets/patch_conv.jpg)
 
