@@ -4,7 +4,9 @@
 
 ## Background
 
-For high-resolution content generation, neural networks may require applying convolution over large-size activations. Currently, PyTorch tends to consume excessive memory for these operations, potentially leading to memory shortages even on 80GB A100 GPUs. As shown in the below figure, starting with input of 1G parameters (channel×height×width), the memory demands of standard PyTorch convolutions increase significantly more rapidly with the activation size  than before. When the input is larger than 2G parameters, the convolution will use up all the 80G memory.
+In current generative models, we usually apply convolutions over large-size activations to generate high-resolution content. However, PyTorch tends to use excessive memory for these operations, potentially leading to memory shortages even on 80GB A100 GPUs. 
+
+As shown in the figure below, memory demands for standard PyTorch convolutions drastically increase when the input size reaches 1B parameters (channel×height×width). Notably, with a kernel size of 7×7, the 80GB A100 GPUs would trigger Out of Memory (OOM) errors. Inputs exceeding 2B parameters can further cause 3×3 convolutions exhaust all the memory and that’s just for one layer! This memory bottleneck prevents users and the community from scaling up the models to produce high-quality images.
 
 To bypass this issue and reduce memory consumption, we propose a simple and effective solution -- Patch Conv. As shown in the above figure, similar to [SIGE](https://github.com/lmxyy/sige), Patch Conv first divides the input into several smaller patches along the height dimension while keeping some overlap between them. These patches are then reorganized into the batch dimension and fed into the original convolution to produce output patches, which are then concatenated together to form the final output. Patch Conv can reduce memory usage by over 2.4×, providing a viable workaround for the limitations of current implementations.
 
