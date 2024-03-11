@@ -10,7 +10,9 @@ As shown in the figure below, memory demands for standard PyTorch convolutions d
 
 To bypass this issue and reduce memory consumption, we propose a simple and effective solution -- Patch Conv. As shown in the above figure, similar to [SIGE](https://github.com/lmxyy/sige), Patch Conv first divides the input into several smaller patches along the height dimension while keeping some overlap between them. These patches are then reorganized into the batch dimension and fed into the original convolution to produce output patches, which are then concatenated together to form the final output. Patch Conv can reduce memory usage by over 2.4×, providing a viable workaround for the limitations of current implementations.
 
-![background](https://github.com/mit-han-lab/patch_conv/blob/main/assets/background.jpg)
+<p align="center">
+  <img src="https://github.com/mit-han-lab/patch_conv/blob/main/assets/background.jpg" width="80%"/>
+</p>
 
 ## Installation
 
