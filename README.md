@@ -32,7 +32,7 @@ or locally for development:
 
 ```shell
 git clone git@github.com:mit-han-lab/patch_conv.git
-cd distrifuser
+cd patch_conv
 pip install -e .
 ```
 
