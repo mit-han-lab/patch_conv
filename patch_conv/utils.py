@@ -3,7 +3,7 @@ from torch import nn
 from .module import PatchConv2d
 
 
-def convert_model(model: nn.Module, splits: int = 4) -> nn.Module:
+def convert_model(model: nn.Module, splits: int = 4, sequential: bool=True) -> nn.Module:
     """
     Convert the convolutions in the model to PatchConv2d.
     """
@@ -17,5 +17,5 @@ def convert_model(model: nn.Module, splits: int = 4) -> nn.Module:
                 continue
             for subname, submodule in module.named_children():
                 if isinstance(submodule, nn.Conv2d) and submodule.kernel_size[0] > 1 and submodule.kernel_size[1] > 1:
-                    setattr(module, subname, PatchConv2d(splits=splits, conv2d=submodule))
+                    setattr(module, subname, PatchConv2d(splits=splits, sequential=sequential, conv2d=submodule))
         return model

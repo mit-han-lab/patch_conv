@@ -15,7 +15,7 @@ class PatchConv2d(nn.Module):
 
     def forward(self, x: torch.Tensor, *args, **kwargs) -> torch.Tensor:
         b, c, h, w = x.shape
-        if c * h * w >= (1 << 30):
+        if c * h * w >= (1 << 29):
             assert h % self.splits == 0
             x_permuted = x.view(b, c, self.splits, h // self.splits, w).permute(0, 2, 1, 3, 4)
             x_padded = F.pad(
@@ -35,6 +35,9 @@ class PatchConv2d(nn.Module):
                     output = self.conv2d(x_padded[i : i + 1], *args, **kwargs)
                     outputs.append(output)
                 output = torch.cat(outputs, dim=0)
+                del outputs
+                if output.device.type == "cuda":
+                    torch.cuda.empty_cache()
             else:
                 output = self.conv2d(x_padded, *args, **kwargs)
             self.conv2d.padding = padding_bak
